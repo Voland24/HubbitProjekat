@@ -1,0 +1,8 @@
+<div [ngClass]="own === true ? 'message own' : 'message'">
+  <div class="message-top">
+    <p #target [ngClass]="own === true ? 'my-text' : 'other-text'">
+      {{ text }}
+    </p>
+  </div>
+  <div class="message-bottom"></div>
+</div>

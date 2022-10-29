@@ -1,0 +1,34 @@
+<div class="wrap">
+  <h2 class="main-title">Welcome {{ currentUsername }}!</h2>
+  <h3>These are your recommendations!</h3>
+  <div class="recommendations">
+    <div *ngIf="potentialPartners">
+      <div class="card" *ngIf="potentialPartners[index] as user">
+        <img
+          [src]="'http://localhost:5000/' + user.profilePic"
+          class="card-img-top"
+          alt="image"
+        />
+        <div class="card-body">
+          <h2 class="card-title">{{ user.username }}, {{ user.dob | age }}</h2>
+          <h4>About me:</h4>
+          <p class="card-text">
+            {{ user.aboutMe }}
+          </p>
+          <p class="card-text">From: {{ user.location }}</p>
+          <div class="card-buttons">
+            <button
+              class="btn btn-secondary"
+              (click)="swipeLeft(user.username)"
+            >
+              <i class="far fa-times-circle"></i>
+            </button>
+            <button class="btn btn-danger" (click)="swipeRight(user.username)">
+              <i class="fas fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

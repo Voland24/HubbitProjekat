@@ -1,0 +1,27 @@
+.chat-thumb {
+  display: flex;
+  height: 5rem;
+  margin-bottom: 5px;
+  align-items: center;
+  overflow: hidden;
+  &:hover {
+    background-color: rgb(201, 201, 201);
+    cursor: pointer;
+  }
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chat-content {
+  margin-left: 10px;
+  text-align: center;
+}
+
+.person-name {
+  font-weight: 450;
+}

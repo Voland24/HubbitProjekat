@@ -1,0 +1,48 @@
+.container {
+  padding-top: 20px;
+}
+
+.input-group {
+  margin: 20px 0;
+}
+.radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8f7ff;
+}
+
+.card {
+  margin-top: 20px;
+  width: 18rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.card-img-top {
+  width: 285px;
+  height: 330px;
+}
+
+.main-title {
+  margin-top: 5px;
+  font-size: xx-large;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.search-results {
+  display: flex;
+  justify-content: space-between;
+}

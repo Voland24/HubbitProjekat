@@ -1,0 +1,16 @@
+.logout-button {
+  cursor: pointer;
+  &:hover {
+    background-color: red;
+    color: white;
+  }
+}
+
+ul {
+  width: 100%;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}

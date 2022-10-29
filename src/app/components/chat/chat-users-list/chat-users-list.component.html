@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="search-message"></div>
+  <div class="convo-settings">
+    <h2>Pick a background</h2>
+    <div class="background-settings">
+      <img
+        *ngFor="let number of numbers"
+        class="background"
+        [src]="
+          '../../../../assets/chat-backgrounds/background' + number + '.jpg'
+        "
+        (click)="setBackground(number)"
+      />
+    </div>
+    <hr />
+    <h2>Pick a color for friends bubble</h2>
+    <div class="bubble-settings">
+      <input [(colorPicker)]="color" [style.background]="color" />
+      <button
+        class="btn btn-success my-2 mx-1"
+        (click)="changeColor()"
+        [disabled]="color === ''"
+      >
+        Change
+      </button>
+    </div>
+    <hr />
+    <div class="search-messages">
+      <form class="example-form" (submit)="searchMessages()">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter message to search</mat-label>
+          <input matInput placeholder="Hello" [formControl]="searchValue" />
+        </mat-form-field>
+        <button class="btn btn-info mx-1" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <p *ngIf="numberOfMessagesFound > 0" class="my-2">
+        Number of messages found: {{ numberOfMessagesFound }}
+      </p>
+      <p *ngIf="numberOfMessagesFound === 0" class="my-2">No messages found</p>
+    </div>
+  </div>
+</div>

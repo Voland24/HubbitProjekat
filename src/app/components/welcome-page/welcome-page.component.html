@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>
+    <i class="fas fa-heart"></i>Welcome to Hubbit<i class="fas fa-heart"></i>
+  </h1>
+  <div class="login-box" *ngIf="!clickedOnToggleRegister">
+    <app-login (loginEmmiter)="login($event)"></app-login>
+    <p>
+      Dont have an account? Click
+      <span class="toggleRegisterButton" (click)="toggleResiterForm()"
+        >here!</span
+      >
+    </p>
+  </div>
+  <div class="register-box" *ngIf="clickedOnToggleRegister">
+    <app-register
+      [interestsArray]="allInterests"
+      (registerEventEmmiter)="register($event)"
+    ></app-register>
+    <p>
+      Already have an account? Click
+      <span class="toggleRegisterButton" (click)="toggleResiterForm()"
+        >here!</span
+      >
+    </p>
+  </div>
+</div>

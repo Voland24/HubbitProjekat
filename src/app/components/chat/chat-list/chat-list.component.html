@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="chat-list">
+    <div class="chat-thumb" *ngFor="let user of connectedUsers">
+      <app-chat-thumb
+        [user]="user"
+        (userEmmiter)="emmitToChatPage($event)"
+      ></app-chat-thumb>
+      <p></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.wrap {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f7ff;
+}
+
+.card {
+  margin-top: 20px;
+  width: 18rem;
+}
+
+.card-img-top {
+  width: 285px;
+  height: 330px;
+}
+
+.main-title {
+  margin-top: 5px;
+  font-size: xx-large;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}

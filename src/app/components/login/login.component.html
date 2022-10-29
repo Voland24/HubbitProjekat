@@ -1,0 +1,28 @@
+<form (ngSubmit)="login()" [formGroup]="loginForm">
+  <h3>Login here</h3>
+
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Username"
+      formControlName="username"
+    />
+  </div>
+
+  <div class="input-group mb-3">
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Password"
+      formControlName="password"
+    />
+  </div>
+  <button
+    class="btn btn-success btn-submit"
+    [disabled]="!loginForm.valid"
+    type="submit"
+  >
+    <i class="fas fa-sign-in-alt"></i>
+  </button>
+</form>

@@ -1,0 +1,112 @@
+<jw-modal id="modal">
+  <div class="update-fields">
+    <h3>Click a filed you want to update</h3>
+    <mat-radio-group
+      aria-label="Select an option"
+      class="radio-group my-2"
+      (change)="selectField($event.value)"
+    >
+      <mat-radio-button value="gender">Gender</mat-radio-button>
+      <mat-radio-button value="aboutMe">About me</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <form *ngIf="change" (ngSubmit)="updateUser()">
+    <p *ngIf="change === 'gender'" class="my-3">Enter <b>m | f | o</b></p>
+    <div class="input-group mb-3 my-2">
+      <input
+        type="text"
+        class="form-control"
+        [placeholder]="change"
+        [formControl]="attribute"
+      />
+    </div>
+    <button class="btn btn-success my-2" type="submit">Update</button>
+  </form>
+
+  <div class="buttons">
+    <button class="btn btn-danger my-3" (click)="closeModal('modal')">
+      Back
+    </button>
+  </div>
+</jw-modal>
+
+<jw-modal id="modal-interests">
+  <h2>Please pick 3 interests</h2>
+  <section class="checkbox-section" *ngIf="allInterests">
+    <mat-checkbox
+      *ngFor="let interest of allInterests | orderBy: 'category'"
+      class="example-margin"
+      (change)="toggleChecked($event.checked, interest.category, 'int')"
+      [disabled]="
+        listOfInterests.length === 3 &&
+        shouldDisableCheckbox(listOfInterests, interest.category)
+      "
+      >{{ interest.category }}</mat-checkbox
+    >
+  </section>
+
+  <div class="buttons">
+    <button class="btn btn-success" (click)="updateInterests()">Update</button>
+    <button
+      class="btn btn-danger my-3 mx-2"
+      (click)="closeModal('modal-interests')"
+    >
+      Back
+    </button>
+  </div>
+</jw-modal>
+
+<div class="card" *ngIf="userVisitProfileView as user">
+  <img
+    [src]="'http://localhost:5000/' + user.profilePic"
+    class="card-img-top"
+    alt="image"
+  />
+  <div class="card-body">
+    <h2 class="card-title">{{ user.fullName }}, {{ user.dob | age }}</h2>
+    <h4 class="card-text">
+      My gender is: <b>{{ user.gender | gender }}</b>
+    </h4>
+    <p class="card-text">About me: {{ user.aboutMe }}</p>
+    <p class="card-text">From: {{ user.location }}</p>
+    <div class="lists">
+      <div>
+        <p>My interests are:</p>
+        <ul class="interest-list">
+          <li *ngFor="let interest of user.listInterests">
+            {{ interest }}
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p>My turn ons are:</p>
+        <ul class="interest-list">
+          <li *ngFor="let interest of user.listTurnOns">
+            {{ interest }}
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p>My turn offs are:</p>
+        <ul class="interest-list">
+          <li *ngFor="let interest of user.listTurnOffs">
+            {{ interest }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button class="btn btn-secondary" (click)="openModal('modal')">
+      Update profile
+    </button>
+
+    <button
+      class="btn btn-secondary mx-3"
+      (click)="openModal('modal-interests')"
+    >
+      Update interests
+    </button>
+  </div>
+</div>

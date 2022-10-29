@@ -1,0 +1,21 @@
+//interests----------------------------------
+db.getCollection('interests').createIndex(
+  {
+      "category": 1
+  },
+  {
+      name: "idx_category",
+      unique: true,
+  }
+)
+
+//interests_as_objects----------------------------------
+db.getCollection('interests_as_objects').createIndex(
+  {
+      "category": 1
+  },
+  {
+      name: "idx_category",
+      unique: false
+  }
+)

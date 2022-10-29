@@ -1,0 +1,27 @@
+<div class="container-fluid" *ngIf="allConnectedUsers">
+  <div class="chat-list">
+    <app-chat-list
+      [connectedUsers]="allConnectedUsers"
+      (chatListUserEmmiter)="showConvo($event)"
+    ></app-chat-list>
+  </div>
+  <div class="chat-box" *ngIf="messagesOfSelectedConvo">
+    <app-chat-box
+      [messages]="messagesOfSelectedConvo"
+      [convoId]="selectedConvoId"
+      [backgroundImagePath]="selectedPathOfBackgroundImage"
+      [bubbleColor]="selectedBubbleColor"
+      (newMessageEmmiter)="sendMessage($event)"
+    ></app-chat-box>
+  </div>
+  <div class="chat-users" *ngIf="messagesOfSelectedConvo">
+    <app-chat-users-list
+      [convoId]="selectedConvoId"
+      (backgroundImageEmmiter)="changeBackgroundImage($event)"
+      (bubbleColorEmmiter)="changeBubbleColor($event)"
+    ></app-chat-users-list>
+  </div>
+</div>
+<div *ngIf="!allConnectedUsers">
+  <p>You dont have any active chats!</p>
+</div>

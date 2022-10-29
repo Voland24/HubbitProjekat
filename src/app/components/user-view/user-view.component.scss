@@ -1,0 +1,29 @@
+.card {
+  margin-top: 20px;
+  width: 60rem;
+}
+
+.card-img-top {
+  width: 285px;
+  height: 330px;
+}
+
+.main-title {
+  margin-top: 5px;
+  font-size: xx-large;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.lists {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-around;
+}
+
+.btn-danger {
+  width: 70px;
+}

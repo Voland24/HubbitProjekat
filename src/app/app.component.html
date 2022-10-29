@@ -1,0 +1,7 @@
+<div class="body">
+  <app-navbar class="header" *ngIf="isUserLoggedIn()"></app-navbar>
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer class="footer"></app-footer>
+</div>

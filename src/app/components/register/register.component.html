@@ -1,0 +1,168 @@
+<mat-stepper linear="true" #stepper *ngIf="interestsArray">
+  <mat-step [stepControl]="registerFormUserDetails">
+    <form [formGroup]="registerFormUserDetails" class="userDetailsForm">
+      <ng-template matStepLabel>Fill out your details</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="First name" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Last name" formControlName="surname" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Username" formControlName="username" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder="Password"
+          formControlName="password"
+          type="password"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Date of birth</mat-label>
+        <input matInput placeholder="dd.MM.yyyy" formControlName="dob" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Gender</mat-label>
+        <input matInput placeholder="m | f | o" formControlName="gender" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Prefered genders</mat-label>
+        <input
+          matInput
+          placeholder="m f o"
+          formControlName="listPreferedGenders"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Tell us about you</mat-label>
+        <textarea
+          matInput
+          placeholder="Hello i am..."
+          formControlName="aboutMe"
+        ></textarea>
+      </mat-form-field>
+
+      <div class="registerButtons">
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <!--TURN ONS-->
+  <mat-step label="Fill out your turn ons">
+    <h2>Please pick 2 turn ons</h2>
+
+    <section class="checkbox-section">
+      <mat-checkbox
+        *ngFor="let interest of interestsArray | orderBy: 'category'"
+        class="example-margin"
+        (change)="toggleChecked($event.checked, interest.category, 'ons')"
+        [disabled]="
+          listOfTurnOns.length === 2 &&
+          shouldDisableCheckbox(listOfTurnOns, interest.category)
+        "
+        >{{ interest.category }}</mat-checkbox
+      >
+    </section>
+    <div class="registerButtons">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <!--!TURN ONS-->
+  <!--TURN OFFS-->
+  <mat-step label="Fill out your turn offs">
+    <h2>Please pick 2 turn offs</h2>
+    <section class="checkbox-section">
+      <mat-checkbox
+        *ngFor="let interest of interestsArray | orderBy: 'category'"
+        class="example-margin"
+        (change)="toggleChecked($event.checked, interest.category, 'offs')"
+        [disabled]="
+          listOfTurnOffs.length === 2 &&
+          shouldDisableCheckbox(listOfTurnOffs, interest.category)
+        "
+        >{{ interest.category }}</mat-checkbox
+      >
+    </section>
+    <div class="registerButtons">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <!--!TURN OFFS-->
+  <!--INTERESTS-->
+  <mat-step
+    [stepControl]="registerFormUserPreferences"
+    label="Fill out your interests"
+  >
+    <h2>Please pick 3 interests</h2>
+    <section class="checkbox-section">
+      <mat-checkbox
+        *ngFor="let interest of interestsArray | orderBy: 'category'"
+        class="example-margin"
+        (change)="toggleChecked($event.checked, interest.category, 'int')"
+        [disabled]="
+          listOfInterests.length === 3 &&
+          shouldDisableCheckbox(listOfInterests, interest.category)
+        "
+        >{{ interest.category }}</mat-checkbox
+      >
+    </section>
+    <div class="registerButtons">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step
+    [stepControl]="registerFormUserPreferences"
+    label="Fill out location details"
+  >
+    <form [formGroup]="registerFormLocationDetails" class="userDetailsForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Your location</mat-label>
+        <input matInput placeholder="Beograd" formControlName="userLocation" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Prefered locations</mat-label>
+        <input
+          matInput
+          placeholder="Nis,Beograd,Leskovac,Novi Sad"
+          formControlName="listPreferedLocations"
+        />
+      </mat-form-field>
+
+      <p>Long distance?</p>
+      <mat-radio-group
+        aria-label="Select an option"
+        class="radio-group"
+        formControlName="longDistance"
+      >
+        <mat-radio-button value="true">Yes</mat-radio-button>
+        <mat-radio-button value="false">No</mat-radio-button>
+      </mat-radio-group>
+    </form>
+
+    <div class="registerButtons">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="register()">Done</button>
+    </div>
+  </mat-step>
+</mat-stepper>

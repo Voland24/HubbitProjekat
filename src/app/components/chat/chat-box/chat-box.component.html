@@ -1,0 +1,25 @@
+<div #container class="container">
+  <div class="messages" *ngFor="let message of messages">
+    <app-message
+      [own]="message.own"
+      [text]="message.text"
+      [bubbleColor]="bubbleColor"
+    ></app-message>
+  </div>
+  <div class="user-input" *ngIf="!hasUserBlockedMe">
+    <form>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          [formControl]="messageToSend"
+        />
+        <span class="input-group-text" (click)="sendMessage()"
+          ><i class="fas fa-paper-plane"></i>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>

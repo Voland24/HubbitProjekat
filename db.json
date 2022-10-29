@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "pera.peric",
+      "fullName": "Pera Peric",
+      "password": "pass123",
+      "email": "pera.peric@gmail.com"
+    },
+    {
+      "id": 2,
+      "username": "mika.mikic",
+      "fullName": "Mika Mikic",
+      "password": "pass123",
+      "email": "mika.mikic@gmail.com"
+    }
+  ]
+}

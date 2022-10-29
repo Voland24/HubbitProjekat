@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="filter-by">
+    <h3>Click on filter you want to filter by:</h3>
+    <mat-radio-group
+      aria-label="Select an option"
+      class="radio-group"
+      (change)="selectFilter($event.value)"
+    >
+      <mat-radio-button value="username">Username</mat-radio-button>
+      <mat-radio-button value="location">Location</mat-radio-button>
+      <mat-radio-button value="fullName">Full name</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <form *ngIf="placeholder" (ngSubmit)="searchByFilter()">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        [placeholder]="placeholder"
+        [formControl]="searchValue"
+      />
+    </div>
+    <button class="btn btn-primary" [disabled]="!searchValue.valid">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
+  <div class="search-results">
+    <div class="wrap" *ngIf="results">
+      <div
+        class="card"
+        *ngFor="let result of results"
+        (click)="moveToUserViewPage(result.username)"
+      >
+        <img
+          [src]="'http://localhost:5000/' + result.profilePic"
+          class="card-img-top"
+          alt="image"
+        />
+        <div class="card-body">
+          <h2 class="card-title">{{ result.fullName }}</h2>
+          <p class="card-text">From: {{ result.location }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

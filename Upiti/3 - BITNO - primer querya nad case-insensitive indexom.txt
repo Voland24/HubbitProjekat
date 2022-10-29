@@ -1,0 +1,1 @@
+db.getCollection('users_search_view').find({ fullName: "nikola Petkovic" }).collation({ locale: "en", strength: 2 })

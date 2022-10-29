@@ -1,0 +1,27 @@
+.container-fluid {
+  display: flex;
+  align-content: space-between;
+  height: 90vh;
+}
+
+.chat-list {
+  width: 25%;
+}
+
+.chat-box {
+  width: 55%;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+}
+
+.chat-users {
+  width: 20%;
+}
+
+.chat-box,
+.chat-users,
+.chat-list {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+}

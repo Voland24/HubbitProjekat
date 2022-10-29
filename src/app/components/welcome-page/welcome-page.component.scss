@@ -1,0 +1,31 @@
+h1 {
+  text-align: center;
+  color: #ff4365;
+}
+.input-group {
+  width: 30%;
+}
+.toggleRegisterButton {
+  &:hover {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.userDetailsForm {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-checkbox {
+  margin-right: 5px;
+}
+
+.registerButtons {
+  margin-top: 10px;
+}
+
+.fa-heart {
+  color: #ff4365;
+}

@@ -1,0 +1,10 @@
+database name: hubbit
+
+napraviti kolekcije:
+	interests
+	users_algorithm_view
+	users_credentials_view
+	users_recommended_view
+	users_relationships_view
+	users_search_view
+	users_visit_profile_view
